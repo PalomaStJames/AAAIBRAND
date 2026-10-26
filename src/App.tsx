@@ -264,11 +264,10 @@ function AssociationCard({
 }
 
 export default function App() {
-  const getDirectoryFromPath = (): Directory =>
-    window.location.pathname.includes('national') &&
-    !window.location.pathname.includes('international')
-      ? 'national'
-      : 'international'
+  const getDirectoryFromPath = (): Directory => {
+    const path = window.location.pathname.replace(/\/+$/, '') || '/'
+    return path === '/national' ? 'national' : 'international'
+  }
 
   const [directory, setDirectory] = useState<Directory>(getDirectoryFromPath)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -290,7 +289,7 @@ export default function App() {
   const selectDirectory = (next: Directory) => {
     setDirectory(next)
     setMenuOpen(false)
-    window.history.pushState({}, '', `/${next}/`)
+    window.history.pushState({}, '', `/${next}`)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
