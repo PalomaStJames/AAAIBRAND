@@ -115,35 +115,17 @@
   align-items: center;
   color: var(--ink);
   display: inline-flex;
-  gap: 12px;
+  flex-shrink: 0;
+  justify-content: flex-start;
   text-decoration: none;
 }
 
-.official-logo {
+.primary-logo {
   display: block;
-  height: 86px;
-  mix-blend-mode: multiply;
+  height: 84px;
   object-fit: contain;
-  width: 87px;
-}
-
-.brand-words {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.2;
-}
-
-.brand-words strong {
-  font-size: 12px;
-  letter-spacing: -0.01em;
-}
-
-.brand-words span {
-  color: var(--muted);
-  font-size: 8px;
-  letter-spacing: 0.11em;
-  margin-top: 4px;
-  text-transform: uppercase;
+  object-position: left center;
+  width: 220px;
 }
 
 .desktop-nav {
@@ -301,6 +283,125 @@
   border-radius: 8px;
   margin-top: 8px;
   padding: 13px 12px;
+}
+
+.anniversary-band {
+  align-items: center;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(54, 169, 214, 0.08), transparent 20%),
+    radial-gradient(circle at 85% 50%, rgba(230, 0, 126, 0.07), transparent 20%),
+    white;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  min-height: 246px;
+  overflow: hidden;
+  padding: 22px max(24px, calc((100vw - 1240px) / 2));
+  position: relative;
+}
+
+.anniversary-band::before,
+.anniversary-band::after {
+  border: 1px solid rgba(54, 169, 214, 0.14);
+  border-radius: 50%;
+  content: '';
+  height: 170px;
+  position: absolute;
+  top: 20px;
+  width: 170px;
+}
+
+.anniversary-band::before {
+  left: -90px;
+}
+
+.anniversary-band::after {
+  border-color: rgba(230, 0, 126, 0.12);
+  right: -90px;
+}
+
+.anniversary-mark {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+.anniversary-mark img {
+  display: block;
+  height: 164px;
+  mix-blend-mode: multiply;
+  object-fit: contain;
+  width: 166px;
+}
+
+.anniversary-caption {
+  color: var(--ink);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-top: 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.anniversary-dots {
+  display: flex;
+  gap: 7px;
+  position: absolute;
+  right: -27px;
+  top: 4px;
+}
+
+.anniversary-dots i {
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+.anniversary-dots i:nth-child(1) {
+  background: var(--aaai-blue);
+}
+
+.anniversary-dots i:nth-child(2) {
+  background: var(--aaai-magenta);
+}
+
+.anniversary-dots i:nth-child(3) {
+  background: var(--aaai-orange);
+}
+
+.anniversary-dots i:nth-child(4) {
+  background: var(--ink);
+}
+
+.anniversary-line {
+  background: linear-gradient(90deg, transparent, rgba(21, 23, 47, 0.18));
+  height: 1px;
+  position: relative;
+}
+
+.anniversary-line::after {
+  background: var(--aaai-blue);
+  border: 4px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(21, 23, 47, 0.12);
+  content: '';
+  height: 14px;
+  position: absolute;
+  right: -1px;
+  top: -6px;
+  width: 14px;
+}
+
+.anniversary-line-right {
+  background: linear-gradient(90deg, rgba(21, 23, 47, 0.18), transparent);
+}
+
+.anniversary-line-right::after {
+  background: var(--aaai-magenta);
+  left: -1px;
+  right: auto;
 }
 
 .mobile-nav button:nth-last-child(2) {
@@ -936,10 +1037,10 @@
   background: linear-gradient(135deg, #dff5fd, #edf8fc);
   border-radius: 8px;
   display: flex;
-  height: 130px;
+  height: 146px;
   justify-content: center;
   margin: 10px 0 14px;
-  padding: 14px;
+  padding: 16px;
   position: relative;
 }
 
@@ -971,14 +1072,20 @@
 }
 
 .logo-stage img {
+  background: white;
+  border: 1px solid rgba(21, 23, 47, 0.06);
+  border-radius: 8px;
+  box-shadow: 0 9px 22px rgba(21, 23, 47, 0.07);
   display: block;
   filter: saturate(0.9);
-  max-height: 94px;
-  max-width: 100%;
+  height: 96px;
+  max-width: 250px;
   object-fit: contain;
+  padding: 12px 18px;
   transition:
     filter 200ms ease,
     transform 200ms ease;
+  width: 88%;
 }
 
 .association-card:hover .logo-stage img {
@@ -1346,12 +1453,14 @@ footer::after {
   z-index: 1;
 }
 
-.footer-brandmark .official-logo {
+.footer-anniversary-logo {
   background: white;
-  border-radius: 6px;
-  height: 98px;
-  padding: 4px;
-  width: 99px;
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+  display: block;
+  height: 124px;
+  object-fit: contain;
+  width: 126px;
 }
 
 .footer-main > div > p {
@@ -1445,8 +1554,9 @@ footer::after {
 }
 
 @media (max-width: 1050px) {
-  .brand-words {
-    display: none;
+  .primary-logo {
+    height: 74px;
+    width: 184px;
   }
 
   .card-grid {
@@ -1560,9 +1670,9 @@ footer::after {
     height: 86px;
   }
 
-  .official-logo {
-    height: 74px;
-    width: 75px;
+  .primary-logo {
+    height: 72px;
+    width: 170px;
   }
 
   .menu-button {
@@ -1574,6 +1684,26 @@ footer::after {
     max-height: calc(100dvh - 134px);
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .anniversary-band {
+    min-height: 210px;
+    padding: 18px;
+  }
+
+  .anniversary-mark img {
+    height: 136px;
+    width: 138px;
+  }
+
+  .anniversary-caption {
+    font-size: 8px;
+    letter-spacing: 0.11em;
+    max-width: 250px;
+  }
+
+  .anniversary-line {
+    opacity: 0.7;
   }
 
   .hero {
@@ -1684,7 +1814,14 @@ footer::after {
   }
 
   .logo-stage {
-    height: 112px;
+    height: 132px;
+  }
+
+  .logo-stage img {
+    height: 88px;
+    max-width: 240px;
+    padding: 10px 16px;
+    width: 90%;
   }
 
   .contact-section {
@@ -1727,6 +1864,11 @@ footer::after {
     padding: 32px 0 26px;
   }
 
+  .footer-anniversary-logo {
+    height: 112px;
+    width: 114px;
+  }
+
   .footer-links {
     justify-content: flex-start;
     margin-top: 26px;
@@ -1752,9 +1894,14 @@ footer::after {
     font-size: 8px;
   }
 
-  .official-logo {
-    height: 70px;
-    width: 71px;
+  .primary-logo {
+    height: 68px;
+    width: 150px;
+  }
+
+  .footer-anniversary-logo {
+    height: 106px;
+    width: 108px;
   }
 
   .hero-brand-motif {

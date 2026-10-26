@@ -1,4 +1,6 @@
 import { useEffect, useState, type CSSProperties } from 'react'
+import anniversaryLogo from '@/imports/Untitled-1.png'
+import footerAnniversaryLogo from '@/imports/Untitled-1-1.png'
 
 type Directory = 'international' | 'national'
 
@@ -215,11 +217,11 @@ function MenuIcon({ open }: { open: boolean }) {
 function Brand({ footer = false }: { footer?: boolean }) {
   return (
     <a aria-label="AAAI home" className={`brand ${footer ? 'footer-brandmark' : ''}`} href="https://aaaindia.org/">
-      <img alt="AAAI 80 Years" className="official-logo" src="/aaai-80-years.jpg" />
-      <span className="brand-words">
-        <strong>Advertising Agencies</strong>
-        <span>Association of India</span>
-      </span>
+      <img
+        alt={footer ? 'AAAI celebrating 80 years' : 'Advertising Agencies Association of India'}
+        className={footer ? 'footer-anniversary-logo' : 'primary-logo'}
+        src={footer ? footerAnniversaryLogo : '/aaai-primary-logo.png'}
+      />
     </a>
   )
 }
@@ -348,6 +350,21 @@ export default function App() {
           </nav>
         )}
       </header>
+
+      <section aria-label="Celebrating 80 years of AAAI" className="anniversary-band">
+        <div aria-hidden="true" className="anniversary-line anniversary-line-left" />
+        <div className="anniversary-mark">
+          <span aria-hidden="true" className="anniversary-dots">
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+          <img alt="AAAI celebrating 80 years" src={anniversaryLogo} />
+          <span className="anniversary-caption">Celebrating eight decades of advertising leadership</span>
+        </div>
+        <div aria-hidden="true" className="anniversary-line anniversary-line-right" />
+      </section>
 
       <main>
         <section className="hero">
